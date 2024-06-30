@@ -1,0 +1,81 @@
+<div style="height: 100vh; width: 98vw; justify-content: center; align-items: center; display: flex;">
+    <div
+        style="background-color:white; width: 85%; max-height: 500px; display: flex; flex-direction: row; padding: 50px; border-radius: 20px;">
+
+        <div id="map" style="width: calc(50% - 5px); height: 400px; margin-right: 20px;"></div>
+
+        <div style="width: calc(50% - 5px); padding-top: 20px;">
+            <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: xx-large;">
+                Registrar dirección</h1>
+            <form [formGroup]="addAddressForm" (ngSubmit)="addAddress()">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <mat-form-field appearance="outline" style="width: calc(50% - 10px);">
+                        <mat-label>Calle</mat-label>
+                        <input matInput formControlName="street" required type="text">
+                        <mat-error
+                            *ngIf="(addAddressForm.controls['street'].touched || addAddressForm.controls['street'].dirty) && addAddressForm.controls['street'].invalid"
+                            style="font-size: xx-small;">
+                            {{getErrorMessage('street')}}
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" style="width: calc(50% - 10px);">
+                        <mat-label>Colonia</mat-label>
+                        <input matInput formControlName="suburb" type="text">
+                        <mat-error
+                            *ngIf="(addAddressForm.controls['suburb'].touched || addAddressForm.controls['suburb'].dirty) && addAddressForm.controls['suburb'].invalid"
+                            style="font-size: xx-small;">
+                            {{getErrorMessage('suburb')}}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <mat-form-field appearance="outline" style="width: calc(50% - 10px);">
+                        <mat-label>Ciudad</mat-label>
+                        <input matInput formControlName="city" required type="text">
+                        <mat-error
+                            *ngIf="(addAddressForm.controls['city'].touched || addAddressForm.controls['city'].dirty) && addAddressForm.controls['city'].invalid"
+                            style="font-size: xx-small;">
+                            {{getErrorMessage('city')}}
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" style="width: calc(50% - 10px);">
+                        <mat-label>Estado</mat-label>
+                        <input matInput formControlName="state" type="text">
+                        <mat-error
+                            *ngIf="(addAddressForm.controls['state'].touched || addAddressForm.controls['state'].dirty) && addAddressForm.controls['state'].invalid"
+                            style="font-size: xx-small;">
+                            {{getErrorMessage('state')}}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <mat-form-field appearance="outline" style="width: calc(50% - 10px);">
+                        <mat-label>País</mat-label>
+                        <input matInput formControlName="country" type="text">
+                        <mat-error
+                            *ngIf="(addAddressForm.controls['country'].touched || addAddressForm.controls['country'].dirty) && addAddressForm.controls['country'].invalid"
+                            style="font-size: xx-small;">
+                            {{getErrorMessage('country')}}
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" style="width: calc(50% - 10px);">
+                        <mat-label>Código postal</mat-label>
+                        <input matInput formControlName="zip_code" type="number">
+                        <mat-error
+                            *ngIf="(addAddressForm.controls['zip_code'].touched || addAddressForm.controls['zip_code'].dirty) && addAddressForm.controls['zip_code'].invalid"
+                            style="font-size: xx-small;">
+                            {{getErrorMessage('zip_code')}}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="example-button-row" style="justify-content: flex-end; display: flex;">
+                    <button mat-raised-button type="submit" [disabled]="addAddressForm.invalid"
+                        color="primary">Registrar dirección</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

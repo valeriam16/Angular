@@ -1,0 +1,20 @@
+<div>
+    <mat-toolbar color="basic" style="width: 98vw;">
+        <span>By: Valeria Morales</span>
+        <mat-icon style="margin-left: 5px;">favorite</mat-icon>
+
+        <div style="display: flex; justify-content: flex-end; flex-grow: 1;">
+            <a mat-flat-button routerLink="/register" color="primary" *ngIf="!isLoggedIn"
+                style="margin-left: 20px;">Registrar</a>
+            <a mat-flat-button routerLink="/login" color="primary" *ngIf="!isLoggedIn"
+                style="margin-left: 20px;">Iniciar sesión</a>
+            <a mat-flat-button routerLink="/usersWithAddresses" color="accent" *ngIf="isAdmin"
+                style="margin-left: 20px;">Obtener direcciones</a>
+            <a mat-flat-button routerLink="/addAddress" color="primary" *ngIf="isSupport"
+                style="margin-left: 20px;">Agregar dirección</a>
+            <a mat-flat-button color="primary" *ngIf="isLoggedIn" (click)="logout()" style="margin-left: 20px;">Cerrar
+                sesión</a>
+        </div>
+
+    </mat-toolbar>
+</div>

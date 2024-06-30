@@ -1,0 +1,69 @@
+<div style="max-height: 1000vh; width: 98vw;">
+    <div style="display: flex; flex-direction: row;">
+        <div
+            style="width: calc(100% - 5px); background-color: aliceblue; padding: 40px; margin: 40px; border-radius: 10px;">
+
+            <div *ngIf="loading" class="loading">
+                <p>Cargando información de los usuarios...</p>
+            </div>
+
+            <div *ngIf="error" class="error">
+                <p>{{ error }}</p>
+            </div>
+
+            <div *ngIf="!loading && !error">
+                <h1
+                    style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: xx-large;">
+                    Usuarios y sus direcciones:</h1>
+                <hr style="width: 100%; margin-top: 0px; margin-bottom: 20px;">
+                <div *ngFor="let user of usersWithAddresses; let userIndex = index" class="user-info">
+                    <mat-card style="margin-bottom: 20px;">
+                        <mat-card-header style="display: flex; flex-direction: row;">
+                            <mat-card-title>Usuario {{ userIndex + 1 }}: <u
+                                    style="margin-left: 5px;">{{user.nickname}}</u></mat-card-title>
+                            <mat-icon aria-hidden="false" fontIcon="user"
+                                style="margin-top: 3px; order: -1; margin-right: 10px;"></mat-icon>
+                        </mat-card-header>
+                        <mat-card-content style="font-size: 15px;">
+                            <mat-grid-list cols="3" rowHeight="40px">
+                                <mat-grid-tile>
+                                    <p><b>Nombre y apellido:</b> {{user.name}} {{user.lastname}}</p>
+                                </mat-grid-tile>
+                                <mat-grid-tile>
+                                    <p><b>Apodo: </b> {{user.nickname}}</p>
+                                </mat-grid-tile>
+                                <mat-grid-tile>
+                                    <p><b>Correo: </b> {{user.email}}</p>
+                                </mat-grid-tile>
+                                <mat-grid-tile>
+                                    <p><b>Teléfono: </b> {{user.phone}}</p>
+                                </mat-grid-tile>
+                                <mat-grid-tile>
+                                    <p><b>Edad: </b> {{user.age}}</p>
+                                </mat-grid-tile>
+                                <mat-grid-tile>
+                                    <p><b>Fecha de nacimiento: </b> {{user.birthdate | date}}</p>
+                                </mat-grid-tile>
+                            </mat-grid-list>
+                            <h3 style="margin-top: 20px; margin-left: 35px;"><b>Direcciones registradas:</b></h3>
+                            <div *ngIf="user.address.length > 0; else noAddresses">
+                                <div *ngFor="let address of user.address; let addressIndex = index"
+                                    style="margin-left: 35px;">
+                                    <p><b>Dirección {{ addressIndex + 1 }}:</b> {{ address.street }}, {{ address.suburb
+                                        }}, {{ address.city }}, {{ address.state }}, {{ address.zip_code }}, {{
+                                        address.country }}.</p>
+                                </div>
+                            </div>
+                            <ng-template #noAddresses>
+                                <p style="margin-left: 35px;">No hay direcciones registradas.</p>
+                            </ng-template>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+
+            <div id="map" style="width: 100%; height: 400px;"></div>
+
+        </div>
+    </div>
+</div>

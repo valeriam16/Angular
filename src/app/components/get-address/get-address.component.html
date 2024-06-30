@@ -1,0 +1,47 @@
+<div style="height: 120vh; width: 98vw;">
+    <div style="display: flex; flex-direction: row;">
+        <div
+            style="width: calc(100% - 5px); background-color: aliceblue; padding: 40px; margin: 40px; border-radius: 10px;">
+            <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: xx-large;">
+                Mis direcciones:</h1>
+            <hr style="width: 100%; margin-top: 0px; margin-bottom: 20px;">
+
+            <div id="map" style="width: 100%; height: 400px;"></div>
+
+            <p *ngIf="userAddress.length > 0; else noAddress">
+            <div *ngFor="let address of userAddress; let i = index" style="margin-bottom: 15px; margin-top: 20px;">
+                <mat-card>
+                    <mat-card-header style="display: flex; flex-direction: row;">
+                        <mat-card-title>Dirección {{ i + 1 }}:</mat-card-title>
+                        <mat-icon aria-hidden="false" fontIcon="home" style="margin-top: 3px; order: -1; margin-right: 10px;"></mat-icon>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <mat-grid-list cols="3" rowHeight="50px">
+                            <mat-grid-tile>
+                                <p><b>Calle:</b> {{address.street}}</p>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <p><b>Colonia: </b> {{address.suburb}}</p>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <p><b>Ciudad: </b> {{address.city}}</p>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <p><b>Estado: </b> {{address.state}}</p>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <p><b>Código postal: </b> {{address.zip_code}}</p>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <p><b>País: </b> {{address.country}}</p>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <ng-template #noAddress>
+                <p>Aún no tienes direcciones registradas.</p>
+            </ng-template>
+        </div>
+    </div>
+</div>

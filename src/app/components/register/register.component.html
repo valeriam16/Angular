@@ -1,0 +1,109 @@
+<div style="height: 120vh; width: 98vw; justify-content: center; align-items: center; display: flex;">
+    <div
+        style="background-color:white; width: 50%; max-height: 500px; display: flex; flex-direction: column; padding: 50px; border-radius: 20px;">
+        <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: xx-large;">
+            Registro
+            de usuario</h1>
+        <form [formGroup]="miFormulario" (ngSubmit)="register()">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <mat-form-field appearance="outline" style="width: calc(50% - 10px);">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput formControlName="name" required type="text">
+                    <mat-error
+                        *ngIf="(miFormulario.controls['name'].touched || miFormulario.controls['name'].dirty) && miFormulario.controls['name'].invalid"
+                        style="font-size: xx-small;">
+                        {{getErrorMessage('name')}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="width: calc(50% - 10px);">
+                    <mat-label>Apellido</mat-label>
+                    <input matInput formControlName="lastname" type="text">
+                    <mat-error
+                        *ngIf="(miFormulario.controls['lastname'].touched || miFormulario.controls['lastname'].dirty) && miFormulario.controls['lastname'].invalid"
+                        style="font-size: xx-small;">
+                        {{getErrorMessage('lastname')}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <mat-form-field appearance="outline" style="width: calc(50% - 10px);">
+                    <mat-label>Edad</mat-label>
+                    <input matInput formControlName="age" required type="number">
+                    <mat-error
+                        *ngIf="(miFormulario.controls['age'].touched || miFormulario.controls['age'].dirty) && miFormulario.controls['age'].invalid"
+                        style="font-size: xx-small;">
+                        {{getErrorMessage('age')}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="width: calc(50% - 10px);">
+                    <mat-label>Fecha de nacimiento</mat-label>
+                    <input matInput formControlName="birthdate" type="date">
+                    <mat-error
+                        *ngIf="(miFormulario.controls['birthdate'].touched || miFormulario.controls['birthdate'].dirty) && miFormulario.controls['birthdate'].invalid"
+                        style="font-size: xx-small;">
+                        {{getErrorMessage('birthdate')}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <mat-form-field appearance="outline" style="width: calc(100% - 10px);">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" type="email">
+                    <mat-error
+                        *ngIf="(miFormulario.controls['email'].touched || miFormulario.controls['email'].dirty) && miFormulario.controls['email'].invalid"
+                        style="font-size: xx-small;">
+                        {{getErrorMessage('email')}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <mat-form-field appearance="outline" style="width: calc(50% - 10px);">
+                    <mat-label>Teléfono</mat-label>
+                    <input matInput formControlName="phone" type="tel">
+                    <mat-error
+                        *ngIf="(miFormulario.controls['phone'].touched || miFormulario.controls['phone'].dirty) && miFormulario.controls['phone'].invalid"
+                        style="font-size: xx-small;">
+                        {{getErrorMessage('phone')}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="width: calc(50% - 10px);">
+                    <mat-label>Apodo</mat-label>
+                    <input matInput formControlName="nickname" type="text">
+                    <mat-error
+                        *ngIf="(miFormulario.controls['nickname'].touched || miFormulario.controls['nickname'].dirty) && miFormulario.controls['nickname'].invalid"
+                        style="font-size: xx-small;">
+                        {{getErrorMessage('nickname')}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <mat-form-field appearance="outline" style="width: calc(50% - 10px);">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput formControlName="password" type="password">
+                    <mat-error
+                        *ngIf="(miFormulario.controls['password'].touched || miFormulario.controls['password'].dirty) && miFormulario.controls['password'].invalid"
+                        style="font-size: xx-small;">
+                        {{ getErrorMessage('password') }}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="width: calc(50% - 10px);">
+                    <mat-label>Confirmar contraseña</mat-label>
+                    <input matInput formControlName="password_confirmation" type="password">
+                    <mat-error
+                        *ngIf="(miFormulario.controls['password_confirmation'].touched || miFormulario.controls['password_confirmation'].dirty) && miFormulario.controls['password_confirmation'].invalid"
+                        style="font-size: xx-small;">
+                        {{ getErrorMessage('password_confirmation') }}
+                    </mat-error>
+                </mat-form-field>
+                <input formControlName="recaptchaToken" type="hidden">
+                <!-- <re-captcha formControlName="recaptchaToken" siteKey="6LejC-gpAAAAAPVuDnsxH04aywYl6EbaohIc0lZT"></re-captcha> -->
+            </div>
+
+            <div class="example-button-row" style="justify-content: flex-end; display: flex;">
+                <button mat-raised-button type="submit" [disabled]="miFormulario.invalid"
+                    color="primary">Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>

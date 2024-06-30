@@ -1,0 +1,35 @@
+<div style="height: 90vh; width: 98vw; justify-content: center; align-items: center; display: flex;">
+    <div
+        style="background-color:white; width: 60%; max-height: 500px; display: flex; flex-direction: row; padding: 50px; border-radius: 20px;">
+        <div style="width: calc(50% - 5px); justify-content: center; align-items: center;">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" style="height: 320px; width: 320px;">
+        </div>
+        <div style="width: calc(50% - 5px); padding-top: 50px;">
+            <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: xx-large;">
+                Iniciar sesión</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <mat-form-field appearance="outline" style="width: calc(100% - 10px);">
+                        <mat-label>Ingresa tu correo, teléfono o apodo</mat-label>
+                        <input matInput formControlName="login_identifier" required type="text">
+                    </mat-form-field>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <mat-form-field appearance="outline" style="width: calc(100% - 10px);">
+                        <mat-label>Contraseña</mat-label>
+                        <input matInput formControlName="password" type="password">
+                    </mat-form-field>
+                </div>
+
+                <div *ngIf="errorMessage" style="color: red; margin-bottom: 10px;">  {{ errorMessage }}</div>
+
+                <div class="example-button-row" style="justify-content: flex-end; display: flex;">
+                    <button mat-raised-button type="submit" [disabled]="loginForm.invalid" color="primary">Iniciar
+                        sesión</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

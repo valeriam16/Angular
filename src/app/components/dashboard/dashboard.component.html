@@ -1,0 +1,52 @@
+<div style="height: 90vh; width: 98vw; justify-content: center; align-items: center; display: flex;">
+    <div style="background-color:white; width: 60%; max-height: 500px; display: flex; flex-direction: row; padding: 20px; border-radius: 20px;"
+        *ngIf="user; else loading">
+        <div class="col-md-4 gradient-custom text-center text-white"
+            style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem; width: calc(35% - 5px); display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 10px;">
+            <img src="https://cdn.iconscout.com/icon/free/png-256/free-account-185-461747.png"
+                style="width: 120px; height: 120px; padding-bottom: 10px;" />
+            <h2>{{ user.name }} {{ user.lastname }}</h2>
+            <h4>Apodo: <b> {{ user.nickname }} </b></h4>
+        </div>
+        <div
+            style=" background-color: beige; border-top-right-radius: .5rem; border-bottom-right-radius: .5rem; width: calc(65% - 5px); display: flex; flex-direction: column; padding: 10px;">
+            <h3 style="font-family: monospace; font-style: italic; font-size: 20px; margin-top: 5px;"><b>Información del
+                    usuario</b>
+            </h3>
+            <hr style="width: 100%; margin-top: 0px;">
+            <div style="display: flex; flex-direction: row; margin: 10px; ">
+                <div style="width: calc(60% - 5px);">
+                    <h5><b>Correo:</b></h5>
+                    <p> {{ user.email }} </p>
+                </div>
+                <div style="width: calc(40% - 5px);">
+                    <h5><b>Teléfono</b></h5>
+                    <p> {{ user.phone }} </p>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: row; margin: 10px; ">
+                <div style="width: calc(60% - 5px);">
+                    <h5><b>Edad:</b></h5>
+                    <p> {{ user.age }} </p>
+                </div>
+                <div style="width: calc(40% - 5px);">
+                    <h5><b>Fecha nacimiento:</b></h5>
+                    <p> {{ user.birthdate | date }} </p>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: row; margin: 10px; align-items: center; justify-content: center;">
+                <a mat-stroked-button routerLink="/getAddress" color="accent" style="margin-left: 20px;">Ver mis direcciones</a>
+            </div>
+
+        </div>
+    </div>
+
+    <ng-template #loading>
+        <p>Cargando datos del usuario...</p>
+    </ng-template>
+
+    <div *ngIf="error">
+        {{ error }}
+    </div>
+</div>
